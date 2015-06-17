@@ -12,17 +12,16 @@ import java.util.Collection;
  * Не проблемы должны толкать вас в спину, а вперед вести мечты.
  */
 public class Start {
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception {
         Caller.getInstance().setUserAgent("tst");
         Caller.getInstance().setDebugMode(false);
 
         String key = "9d1fa626c7434de90d21b8588395d568"; //this is the key used in the Last.fm API examples
         String user = "h4ssler";
         String secret = "2524b49ea82a87d52cea3ff2aea699fa";   // api secret
-        String password = "107355"; // user's password
+        String password = ""; // user's password
         Session session = Authenticator.getMobileSession(user, password, key, secret);
         String apiKey = getApiKey(session);
-
         
         //PaginatedResult<Artist> recomendations = getRecArtists(session);
         Collection<User> neighbours = getNeighbours(user, key);
@@ -38,10 +37,14 @@ public class Start {
         System.out.println("Рекомендованные вам композиции:");
 
         PaginatedResult<Track> yourRecomendations = getLoved(users.get(rand).getName(), key);
-        
-        for(Track t:yourRecomendations)
-            System.out.println(t.getName() + " - " + t.getArtist());
 
+
+        for(Track t:yourRecomendations){
+            String patch = parse.parse(t.getArtist(), t.getName());
+            playTrack.play(patch);
+            System.out.println(patch);
+            System.out.println(t.getName() + " - " + t.getArtist());
+        }
 
 
         

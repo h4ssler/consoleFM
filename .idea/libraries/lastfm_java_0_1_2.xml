@@ -1,9 +1,11 @@
 <component name="libraryTable">
   <library name="lastfm-java-0.1.2">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../lastfm-java-0.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lastfm-java-0.1.2.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/httpcomponents-client-4.5" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/httpcomponents-client-4.5" recursive="false" />
   </library>
 </component>
